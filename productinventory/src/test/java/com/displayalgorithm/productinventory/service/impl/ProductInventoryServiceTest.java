@@ -41,7 +41,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[1]", listedProducts);
+		assertEquals("1", listedProducts);
 
 	}
 
@@ -60,7 +60,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[1]", listedProducts);
+		assertEquals("1", listedProducts);
 
 	}
 
@@ -79,7 +79,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[]", listedProducts);
+		assertEquals("", listedProducts);
 
 	}
 
@@ -101,7 +101,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[1]", listedProducts);
+		assertEquals("1", listedProducts);
 
 	}
 
@@ -123,7 +123,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[1]", listedProducts);
+		assertEquals("1", listedProducts);
 
 	}
 
@@ -142,7 +142,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[]", listedProducts);
+		assertEquals("", listedProducts);
 
 	}
 
@@ -159,7 +159,7 @@ class ProductInventoryServiceTest {
 		Mockito.when(productInventoryDBService.listProducts()).thenReturn(products);
 		listedProducts = productInventoryService.listProducts();
 
-		assertEquals("[]", listedProducts);
+		assertEquals("", listedProducts);
 
 	}
 }

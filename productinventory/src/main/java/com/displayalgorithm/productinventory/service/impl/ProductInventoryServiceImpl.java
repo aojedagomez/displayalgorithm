@@ -32,7 +32,7 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
 				productList.add(product.getId() + "");
 			}
 		}
-		return productList.toString();
+		return productList.toString().replaceAll("[\\p{Ps}\\p{Pe}]", "");
 	}
 
 	/**
