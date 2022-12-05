@@ -1,0 +1,4 @@
+datasource:
+  productcsv: src/test/resources/mocks/mockedProduct.csv
+  sizecsv: src/test/resources/mocks/mockedSize.csv
+  stockcsv: src/test/resources/mocks/mockedStock.csv

@@ -1,0 +1,4 @@
+datasource:
+  productcsv: src/main/resources/files/product.csv
+  sizecsv: src/main/resources/files/size.csv
+  stockcsv: src/main/resources/files/stock.csv
