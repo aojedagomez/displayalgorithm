@@ -62,8 +62,8 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
 				specialWithStock = hasStock(size);
 			}
 
-			if (!specialProduct && hasStock(size)) {
-				nonSpecialWithStock = true;
+			if (!size.getSpecial()) {
+				nonSpecialWithStock = hasStock(size);
 			}
 		}
 
