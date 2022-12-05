@@ -83,8 +83,8 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 	 * @return
 	 */
 	private static Product createProduct(String[] metadata) {
-		int id = Integer.parseInt(metadata[0]);
-		int sequence = Integer.parseInt(metadata[1]);
+		int id = Integer.parseInt(metadata[0].replaceAll("\\s+", ""));
+		int sequence = Integer.parseInt(metadata[1].replaceAll("\\s+", ""));
 		return new Product(id, sequence);
 	}
 
@@ -104,10 +104,10 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 			while (line != null) {
 				String[] attributes = line.split(", ");
 
-				int id = Integer.parseInt(attributes[0]);
-				int productId = Integer.parseInt(attributes[1]);
-				String backSoon = attributes[2];
-				String special = attributes[3];
+				int id = Integer.parseInt(attributes[0].replaceAll("\\s+", ""));
+				int productId = Integer.parseInt(attributes[1].replaceAll("\\s+", ""));
+				String backSoon = attributes[2].replaceAll("\\s+", "");
+				String special = attributes[3].replaceAll("\\s+", "");
 				Size size = new Size(id, Boolean.parseBoolean(backSoon), Boolean.parseBoolean(special));
 				for (Product product : products) {
 					if (productId == product.getId()) {
@@ -138,8 +138,8 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 
 			while (line != null) {
 				String[] attributes = line.split(", ");
-				int sizeId = Integer.parseInt(attributes[0]);
-				int quantity = Integer.parseInt(attributes[1]);
+				int sizeId = Integer.parseInt(attributes[0].replaceAll("\\s+", ""));
+				int quantity = Integer.parseInt(attributes[1].replaceAll("\\s+", ""));
 				for (Product product : products) {
 					for (Size size : product.getSize()) {
 						if (sizeId == size.getId()) {
