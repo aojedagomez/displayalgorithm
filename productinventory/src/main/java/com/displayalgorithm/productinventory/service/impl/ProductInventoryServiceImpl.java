@@ -1,8 +1,7 @@
 package com.displayalgorithm.productinventory.service.impl;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,15 +23,15 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
 
 	@Override
 	public String listProducts() {
-		List<Product> products = productInventoryDBService.listProducts();
-		products.sort(Comparator.comparing(Product::getSequence));
-		List<String> productList = new ArrayList<>();
+		Set<Product> products = productInventoryDBService.listProducts();
+		TreeMap<Integer, Integer> productList = new TreeMap<>();
 		for (Product product : products) {
 			if (isVisible(product.getSize())) {
-				productList.add(product.getId() + "");
+				productList.put(product.getSequence(), product.getId());
 			}
 		}
-		return productList.toString().replaceAll("[\\p{Ps}\\p{Pe}]", "");
+		productList.descendingKeySet();
+		return productList.values().toString().replaceAll("[\\p{Ps}\\p{Pe}]", "");
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
 	 * @param sizes
 	 * @return
 	 */
-	public boolean isVisible(List<Size> sizes) {
+	public boolean isVisible(Set<Size> sizes) {
 		boolean specialWithStock = false;
 		boolean nonSpecialWithStock = false;
 		boolean specialProduct = false;

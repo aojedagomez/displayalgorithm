@@ -1,9 +1,9 @@
 package com.displayalgorithm.productinventory.db.client;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ class ProductinventoryInitializationsTest {
 
 	@Test
 	public void nonSpecialProductWithSockTest() {
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 10);
 		Size size = new Size(11, true, false);
 		Stock stock = new Stock(0);
@@ -29,8 +29,8 @@ class ProductinventoryInitializationsTest {
 		product.getSize().add(size);
 		products.add(product);
 
-		List<Product> dbResponse = productInventoryDBService.listProducts();
-		assertEquals(products, dbResponse);
+		Set<Product> dbResponse = productInventoryDBService.listProducts();
+		assertIterableEquals(products, dbResponse);
 
 	}
 }

@@ -6,8 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -41,8 +41,8 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 	}
 
 	@Override
-	public List<Product> listProducts() {
-		List<Product> products = readProductsFromCSV(getProductcsv());
+	public Set<Product> listProducts() {
+		Set<Product> products = readProductsFromCSV(getProductcsv());
 		loadSizesFromCSV(getSizecsv(), products);
 		loadStockFromCSV(getStockcsv(), products);
 		return products;
@@ -54,9 +54,9 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 	 * @param fileName
 	 * @return
 	 */
-	private static List<Product> readProductsFromCSV(String fileName) {
+	private static Set<Product> readProductsFromCSV(String fileName) {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Path pathToFile = Paths.get(fileName);
 		try (BufferedReader bufferedReader = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
 
@@ -94,7 +94,7 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 	 * @param fileName
 	 * @param products
 	 */
-	private static void loadSizesFromCSV(String fileName, List<Product> products) {
+	private static void loadSizesFromCSV(String fileName, Set<Product> products) {
 
 		Path pathToFile = Paths.get(fileName);
 		try (BufferedReader bufferedReader = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
@@ -129,7 +129,7 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 	 * @param fileName
 	 * @param products
 	 */
-	private static void loadStockFromCSV(String fileName, List<Product> products) {
+	private static void loadStockFromCSV(String fileName, Set<Product> products) {
 
 		Path pathToFile = Paths.get(fileName);
 		try (BufferedReader bufferedReader = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {

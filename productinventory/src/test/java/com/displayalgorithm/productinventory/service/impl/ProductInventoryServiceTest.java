@@ -2,8 +2,8 @@ package com.displayalgorithm.productinventory.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +29,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void nonSpecialProductWithSockTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size size = new Size(11, false, false);
 		Stock stock = new Stock(1);
@@ -48,7 +48,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void nonSpecialProductBackSoonTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size size = new Size(11, true, false);
 		Stock stock = new Stock(0);
@@ -67,7 +67,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void nonSpecialProductWithOutSockTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size size = new Size(11, false, false);
 		Stock stock = new Stock(0);
@@ -86,7 +86,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void specialProductWithSockTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size specialSize = new Size(11, false, true);
 		Size size = new Size(12, false, false);
@@ -108,7 +108,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void specialProductBackSoonTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size specialSize = new Size(11, true, true);
 		Size size = new Size(12, true, false);
@@ -130,7 +130,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void specialProductWithOutSockTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size size = new Size(11, false, true);
 		Stock stock = new Stock(1);
@@ -149,7 +149,7 @@ class ProductInventoryServiceTest {
 	@Test
 	public void nonSpecialProductNullSockTest() {
 
-		List<Product> products = new ArrayList<>();
+		Set<Product> products = new HashSet<>();
 		Product product = new Product(1, 1);
 		Size size = new Size(11, false, true);
 		product.getSize().add(size);

@@ -1,6 +1,6 @@
 package com.displayalgorithm.productinventory.db.client;
 
-import java.util.List;
+import java.util.Set;
 
 import com.displayalgorithm.productinventory.db.model.Product;
 
@@ -17,5 +17,5 @@ public interface ProductInventoryDBService {
 	 * 
 	 * @return
 	 */
-	List<Product> listProducts();
+	Set<Product> listProducts();
 }

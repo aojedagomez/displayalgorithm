@@ -1,7 +1,7 @@
 package com.displayalgorithm.productinventory.db.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.Data;
 
@@ -10,11 +10,11 @@ public class Product {
 
 	private int id;
 	private int sequence;
-	private List<Size> size = null;
+	private Set<Size> size = null;
 
 	public Product(int id, int sequence) {
 		this.id = id;
 		this.sequence = sequence;
-		this.size = new ArrayList<>();
+		this.size = new HashSet<>();
 	}
 }
