@@ -83,8 +83,8 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 	 * @return
 	 */
 	private static Product createProduct(String[] metadata) {
-		int id = Integer.parseInt(metadata[0].replaceAll("\\s+", ""));
-		int sequence = Integer.parseInt(metadata[1].replaceAll("\\s+", ""));
+		int id = Integer.parseInt(deleteWhiteSpaces(metadata[0]));
+		int sequence = Integer.parseInt(deleteWhiteSpaces(metadata[1]));
 		return new Product(id, sequence);
 	}
 
@@ -104,10 +104,10 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 			while (line != null) {
 				String[] attributes = line.split(", ");
 
-				int id = Integer.parseInt(attributes[0].replaceAll("\\s+", ""));
-				int productId = Integer.parseInt(attributes[1].replaceAll("\\s+", ""));
-				String backSoon = attributes[2].replaceAll("\\s+", "");
-				String special = attributes[3].replaceAll("\\s+", "");
+				int id = Integer.parseInt(deleteWhiteSpaces(attributes[0]));
+				int productId = Integer.parseInt(deleteWhiteSpaces(attributes[1]));
+				String backSoon = deleteWhiteSpaces(attributes[2]);
+				String special = deleteWhiteSpaces(attributes[3]);
 				Size size = new Size(id, Boolean.parseBoolean(backSoon), Boolean.parseBoolean(special));
 				for (Product product : products) {
 					if (productId == product.getId()) {
@@ -138,8 +138,8 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 
 			while (line != null) {
 				String[] attributes = line.split(", ");
-				int sizeId = Integer.parseInt(attributes[0].replaceAll("\\s+", ""));
-				int quantity = Integer.parseInt(attributes[1].replaceAll("\\s+", ""));
+				int sizeId = Integer.parseInt(deleteWhiteSpaces(attributes[0]));
+				int quantity = Integer.parseInt(deleteWhiteSpaces(attributes[1]));
 				for (Product product : products) {
 					for (Size size : product.getSize()) {
 						if (sizeId == size.getId()) {
@@ -155,5 +155,15 @@ public class ProductInventoryDBServiceImpl implements ProductInventoryDBService 
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
+	}
+
+	/**
+	 * Método para eliminar espacios en blanco de los metadatos del csv.
+	 * 
+	 * @param metadata
+	 * @return
+	 */
+	public static String deleteWhiteSpaces(String metadata) {
+		return metadata.replaceAll("\\s+", "");
 	}
 }
